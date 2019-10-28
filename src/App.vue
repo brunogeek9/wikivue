@@ -21,8 +21,25 @@ export default {
   components: {
     // HelloWorld
   },
-  computed:{
-    
+  computed: {
+    query: {
+      get() {
+        return this.$store.state.query;
+      },
+      set(value) {
+        his.$store.commit("updateQuery", value);
+      },
+      articles() {
+        return this.$store.getters.articles;
+      }
+    }
+  },
+  methods: {
+    getArticles() {
+      if (this.query) {
+        this.$store.dispatch("getArticles");
+      }
+    }
   },
   data() {
     return {
