@@ -7,22 +7,30 @@
         placeholder="Search from wikipedia"
         autofocus
         v-model="query"
-        v-on:input="getArticles"
+        @change="getArticles"
+        @keyup.enter="getArticles"
       />
+      <!-- <input type="submit" @click="getArticles"> -->
     </header>
-    <ul class="list-group list-unstyled">
-      <li v-for="(item, index) in articles" :key="index">
-        <a :href="item.url" class="list-group-item list-group-item-action" target="_blank">
-          <h1>{{ item.title }}</h1>
-
-          <p>{{ item.snippet }}</p>
-        </a>
+    <ul>
+      <li v-for="(item, index) in this.$store.getters.articles" v-bind:key="index">
+        <div class="card">
+          <header>
+            <a v-bind:href="item.link" target="_blank">
+              <h2>{{item.title}}</h2>
+            </a>
+          </header>
+          <footer>
+            <p>{{item.snippet}}</p>
+          </footer>
+        </div>
       </li>
     </ul>
+    <!-- {{this.$store.getters.articles}} -->
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
+// import { mapGetters } from "vuex";
 export default {
   name: "app",
   computed: {
@@ -33,10 +41,9 @@ export default {
       set(value) {
         this.$store.commit("updateQuery", value);
       },
-      ...mapGetters([
-        "articles"
-        // ...
-      ])
+      articles() {
+        return this.$store.getters.articles;
+      }
     }
   },
   methods: {
@@ -48,7 +55,9 @@ export default {
   },
   data() {
     return {
-      title: "Wikipedia Viewer"
+      title: "Wikipedia Viewer",
+      // articles: this.$store.getters.articles
+
     };
   }
 };
@@ -65,5 +74,8 @@ h1 {
 }
 main > header {
   margin-bottom: 4em;
+}
+ul{
+  list-style-type: none;
 }
 </style>
