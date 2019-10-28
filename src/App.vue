@@ -10,28 +10,33 @@
         v-on:input="getArticles"
       />
     </header>
+    <ul class="list-group list-unstyled">
+      <li v-for="(item, index) in articles" :key="index">
+        <a :href="item.url" class="list-group-item list-group-item-action" target="_blank">
+          <h1>{{ item.title }}</h1>
+
+          <p>{{ item.snippet }}</p>
+        </a>
+      </li>
+    </ul>
   </div>
 </template>
-
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-
+import { mapGetters } from "vuex";
 export default {
   name: "app",
-  components: {
-    // HelloWorld
-  },
   computed: {
     query: {
       get() {
         return this.$store.state.query;
       },
       set(value) {
-        his.$store.commit("updateQuery", value);
+        this.$store.commit("updateQuery", value);
       },
-      articles() {
-        return this.$store.getters.articles;
-      }
+      ...mapGetters([
+        "articles"
+        // ...
+      ])
     }
   },
   methods: {
