@@ -16,7 +16,7 @@
       <li v-for="(item, index) in this.$store.getters.articles" v-bind:key="index">
         <div class="card">
           <header>
-            <a v-bind:href="item.link" target="_blank">
+            <a v-bind:href="item.url" target="_blank">
               <h2>{{item.title}}</h2>
             </a>
           </header>
