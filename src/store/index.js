@@ -18,15 +18,14 @@ export default new Vuex.Store({
   actions: {
     async getArticles({ state, commit }) {
       const cors_proxy = 'https://cors-anywhere.herokuapp.com/'
-      const url = `${cors_proxy}https://en.wikipedia.org/w/api.php?action=opensearch&search=${
-        state.query
-        }&origin=*`;
+      const url = `${cors_proxy}https://en.wikipedia.org/w/api.php?action=opensearch&search=
+      ${state.query}&origin=*`;
 
       const response = await axios.get(url);
-
+      window.console.log(response);
       const articles = [];
 
-      for (let i = 0, j = response.data[i].length; i < j; i++) {
+      for (let i = 0, j = response.data[i].length - 1; i < j; i++) {
         articles[i] = {
           title: response.data[1][i],
           snippet: response.data[2][i],

@@ -1,4 +1,6 @@
 <template>
+
+
   <div class="container">
     <header>
       <h1>{{title}}</h1>
@@ -15,14 +17,14 @@
     <ul>
       <li v-for="(item, index) in this.$store.getters.articles" v-bind:key="index">
         <div class="card">
-          <header>
-            <a v-bind:href="item.url" target="_blank">
-              <h2>{{item.title}}</h2>
-            </a>
-          </header>
-          <footer>
-            <p>{{item.snippet}}</p>
-          </footer>
+          <a v-bind:href="item.url" target="_blank">
+            <header class="card-title">
+                <h2>{{item.title}}</h2>
+            </header>
+            <footer>
+              <p>{{item.url}}</p>
+            </footer>
+          </a>
         </div>
       </li>
     </ul>
@@ -36,6 +38,8 @@ export default {
   computed: {
     query: {
       get() {
+        // window.console.log(this.$store.state.articles)
+
         return this.$store.state.query;
       },
       set(value) {
@@ -64,6 +68,7 @@ export default {
 </script>
 
 <style>
+
 .container {
   max-width: 760px;
   margin: 0 auto;
@@ -71,11 +76,32 @@ export default {
 }
 h1 {
   text-align: center;
+  color: red;
+}
+h2{
+  color: black;
+  font-weidth: bold;
 }
 main > header {
   margin-bottom: 4em;
 }
 ul{
   list-style-type: none;
+  margin-top: 20px;
+  margin: 0 auto;
+  padding: 2em;
+}
+header, footer{
+  font-size: 22px;
+  font-family: 'Gotu', sans-serif;
+  border-style: none;
+}
+
+body{
+  font-family: 'Work Sans', sans-serif;
+}
+
+a{
+  font-family: 'Space Mono', monospace;
 }
 </style>
