@@ -1,5 +1,9 @@
 # wikivue
+<p>
 
+**simple project using wikipedia's public api to list articles with real-time searches in a SPA.**
+
+</p>
 <p align="center">
 
   <a href="https://github.com/brunogeek9" target="_blank">
@@ -44,13 +48,10 @@ npm run lint
 ### Demonstration
 ![](demonstration/demo.gif)
 
+---
 
 ## :memo: License
 
 Esse projeto foi feito sob a licença MIT. Veja mais aqui [LICENSE](/LICENSE) para mais informações.
-
----
-
-<p> Project developed on SemanaOmnistack 11.0 - RocketSeat </p>
 
 Made by [Bruno Jamelli](https://github.com/brunogeek9)
