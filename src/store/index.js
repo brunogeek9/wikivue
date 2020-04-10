@@ -23,16 +23,23 @@ export default new Vuex.Store({
 
       const response = await axios.get(url);
       window.console.log(response);
-      const articles = [];
+      let articles = [];
 
-      for (let i = 0, j = response.data[i].length - 1; i < j; i++) {
-        articles[i] = {
-          title: response.data[1][i],
-          snippet: response.data[2][i],
-          url: response.data[3][i]
-        };
+
+      if (state.query == null) {
+        articles = [];
+        commit("articles", articles);
+      } else {
+        for (let i = 0, j = response.data[i].length - 1; i < j; i++) {
+          articles[i] = {
+            title: response.data[1][i],
+            snippet: response.data[2][i],
+            url: response.data[3][i]
+          };
+        }
+        commit("articles", articles);
+
       }
-
       commit("articles", articles);
     }
   },

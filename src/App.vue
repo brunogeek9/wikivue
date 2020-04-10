@@ -14,7 +14,7 @@
       />
       <!-- <input type="submit" @click="getArticles"> -->
     </header>
-    <ul>
+    <ul v-if="this.$store.getters.articles.length > 0">
       <li v-for="(item, index) in this.$store.getters.articles" v-bind:key="index">
         <div class="card">
           <a v-bind:href="item.url" target="_blank">
@@ -52,9 +52,12 @@ export default {
   },
   methods: {
     getArticles() {
-      if (this.query) {
+      if (this.query === ""){
+        this.$store.dispatch("getArticles");
+      }else{
         this.$store.dispatch("getArticles");
       }
+      
     }
   },
   data() {
@@ -89,7 +92,9 @@ ul{
   list-style-type: none;
   margin-top: 20px;
   margin: 0 auto;
-  padding: 2em;
+}
+li{
+  margin: 2em;
 }
 header, footer{
   font-size: 22px;
