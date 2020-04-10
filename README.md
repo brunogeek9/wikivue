@@ -52,6 +52,6 @@ npm run lint
 
 ## :memo: License
 
-Esse projeto foi feito sob a licença MIT. Veja mais aqui [LICENSE](/LICENSE) para mais informações.
+Esse projeto foi feito sob a licença MIT. Veja aqui [LICENSE](/LICENSE) para mais informações.
 
 Made by [Bruno Jamelli](https://github.com/brunogeek9)
